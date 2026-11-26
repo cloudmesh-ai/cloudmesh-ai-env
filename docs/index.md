@@ -54,6 +54,10 @@ And build the static site:
 make doc
 ```
 
+### Further Reading
+
+- [User Manual](user_manual.md) – detailed guide covering installation, CLI usage, options, and development workflows.
+
 ## Contributing
 
 Contributions are welcome! Please see the `CONTRIBUTING.md` (to be added) for guidelines.

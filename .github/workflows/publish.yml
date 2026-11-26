@@ -1,0 +1,45 @@
+name: Publish Docs
+
+# This workflow builds the MkDocs site and publishes it to the `gh-pages`
+# branch whenever the README or any file under `docs/` is changed.
+
+on:
+  push:
+    paths:
+      - 'README.md'
+      - 'docs/**'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Set up Python (MkDocs works with any recent version)
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # Install the documentation dependencies and the package itself (editable)
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-docs.txt
+          pip install -e .
+
+      # Build the static site with MkDocs
+      - name: Build site
+        run: mkdocs build
+
+      # Deploy the generated site to GitHub Pages using the built‑in token
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          # If you want to keep the history on gh-pages you can enable force_push
+          # force_orphan: true
+          # keep files from previous deploys – not needed for a fresh site
