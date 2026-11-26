@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cm-env"
+version = "0.1.0"
+description = "Command-line configuration tool for applying configuration to a target directory"
+readme = "README.md"
+requires-python = ">=3.8"
+license = "Apache-2.0"
+authors = [
+    {name = "Gregor von Laszewski", email = "laszewski@gmail.com"}
+]
+# No runtime dependencies for now
+
+[project.scripts]
+cm-env = "cm_env.config:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
