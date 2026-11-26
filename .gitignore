@@ -92,8 +92,11 @@ $RECYCLE.BIN/
 .project
 .classpath
 
-# Sensitive files
-*.pem
-*.key
-*.crt
+ # Sensitive files
+ *.pem
+ *.key
+ *.crt
+
+# MkDocs generated site
+site/
 
