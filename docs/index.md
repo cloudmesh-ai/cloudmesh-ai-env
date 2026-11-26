@@ -6,12 +6,38 @@ This documentation provides an overview of the project, how to set up the develo
 
 ## Getting Started
 
-To get started with this project, clone the repository and install the required dependencies:
+To get started with this project, clone the repository and set up a development environment. You can choose between the classic `pip` workflow or the faster `uv` workflow. Optionally, enable `direnv` for automatic environment activation.
 
 ```bash
 git clone https://github.com/cloudmesh-ai/cloudmesh-ai-env.git
 cd cloudmesh-ai-env
-make install  # if an install target is defined, otherwise use pip install -e .
+```
+
+### Pip workflow (default)
+
+```bash
+make install   # installs the package in editable mode using pip
+```
+
+### UV workflow
+
+```bash
+make uv-install   # creates a uv virtual environment and installs the package
+```
+
+### Direnv auto‑activation (optional)
+
+```bash
+brew install direnv   # macOS example; see direnv docs for other platforms
+echo 'eval "$(direnv hook bash)"' >> ~/.bashrc   # or ~/.zshrc for Zsh
+direnv allow
+```
+
+After the environment is set up, you can run the CLI:
+
+```bash
+cm-env .               # from an activated venv
+uv run cm-env .        # without activating
 ```
 
 ## Documentation

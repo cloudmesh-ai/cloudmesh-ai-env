@@ -1,2 +1,2 @@
 Configuration applied to /Users/grey/work/cloudmesh-ai-env
-Python version: python3.10
+Python version: python3.15.2

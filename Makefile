@@ -28,6 +28,18 @@ help:
 install:
 	$(PIP) install -e .
 
+# UV-based development workflow
+uv-venv:
+	uv venv .venv --clear
+
+uv-install: uv-venv
+	uv pip install -e .
+
+uv-run:
+	uv run cm-env $(ARGS)
+
+uv-clean:
+	rm -rf .venv .direnv
 # Documentation dependencies (requirements-docs.txt and the local theme)
 DOC_DEPS = requirements-docs.txt ../cloudmesh-ai-theme
 
